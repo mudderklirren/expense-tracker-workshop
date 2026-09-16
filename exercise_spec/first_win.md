@@ -1,6 +1,6 @@
 # Workshop 1: First-Win Task Specs
 
-This is the assigned task for the thirty-minute first win in the Workshop 1
+This is a 30-minute take-home task following the Workshop 1
 live session. Pick **one variant** (A, B, or C) below.
 All three are the same size and difficulty; they differ so that neighbours
 work on different features.
