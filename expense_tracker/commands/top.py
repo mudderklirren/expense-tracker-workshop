@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from ..formatting import format_expense_line
+from ..money import format_amount
 
 NAME = "top"
 HELP = "Show the largest expenses, biggest first"
@@ -35,6 +35,8 @@ def handle(args, store) -> int:
     # sorted() is stable, so expenses of equal size keep their insertion order.
     largest = sorted(expenses, key=lambda e: e.amount_cents, reverse=True)[: args.limit]
 
-    for expense in largest:
-        print(format_expense_line(expense))
+    for e in largest:
+        # Same line format as the ``list`` command.
+        note = f"  ({e.note})" if e.note else ""
+        print(f"#{e.id}  {e.date}  {format_amount(e.amount_cents):>10}  {e.category}{note}")
     return 0

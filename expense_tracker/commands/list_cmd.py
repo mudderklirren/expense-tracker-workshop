@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from ..formatting import format_expense_line
+from ..money import format_amount
 
 NAME = "list"
 HELP = "List expenses, optionally filtered by category"
@@ -27,5 +27,6 @@ def handle(args, store) -> int:
         return 0
 
     for e in expenses:
-        print(format_expense_line(e))
+        note = f"  ({e.note})" if e.note else ""
+        print(f"#{e.id}  {e.date}  {format_amount(e.amount_cents):>10}  {e.category}{note}")
     return 0
